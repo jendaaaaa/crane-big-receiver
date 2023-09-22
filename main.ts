@@ -14,7 +14,7 @@ PCA9685.setCRServoPosition(rotor, 0, addr)
 PCA9685.setServoPosition(gripper, 0, addr)
 PCA9685.setLedDutyCycle(PCA9685.LEDNum.LED9, 80, addr)
 radio.onReceivedValue(function (name, value) {
-    if (name == "rotation") {
+    if (name == "rotate") {
         PCA9685.setCRServoPosition(rotor, value, addr)
     } else if (name == "inner") {
         PCA9685.setCRServoPosition(winchInner, value, addr)
