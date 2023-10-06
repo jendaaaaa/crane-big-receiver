@@ -1,5 +1,5 @@
 {
-    "name": "crane-receiver",
+    "name": "crane-RX",
     "description": "",
     "dependencies": {
         "core": "*",
