@@ -6,7 +6,7 @@ let winchOuter = PCA9685.ServoNum.Servo2
 let rotor = PCA9685.ServoNum.Servo3
 let gripper = PCA9685.ServoNum.Servo4
 let addr = 64
-radio.setGroup(120)
+radio.setGroup(92)
 PCA9685.init(addr, 0)
 PCA9685.setCRServoPosition(winchInner, 0, addr)
 PCA9685.setCRServoPosition(winchOuter, 0, addr)
