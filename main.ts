@@ -1,4 +1,4 @@
-led.enable(false)
+// CONSTANTS
 let GripperStatus = 0
 let GripperRelease = 1
 let winchInner = PCA9685.ServoNum.Servo1
@@ -6,13 +6,18 @@ let winchOuter = PCA9685.ServoNum.Servo2
 let rotor = PCA9685.ServoNum.Servo3
 let gripper = PCA9685.ServoNum.Servo4
 let addr = 64
-radio.setGroup(92)
+
+// INIT
+radio.setGroup(46)
+led.enable(false)
 PCA9685.init(addr, 0)
 PCA9685.setCRServoPosition(winchInner, 0, addr)
 PCA9685.setCRServoPosition(winchOuter, 0, addr)
 PCA9685.setCRServoPosition(rotor, 0, addr)
 PCA9685.setServoPosition(gripper, 0, addr)
 PCA9685.setLedDutyCycle(PCA9685.LEDNum.LED9, 80, addr)
+
+// RADIO
 radio.onReceivedValue(function (name, value) {
     if (name == "rotate") {
         PCA9685.setCRServoPosition(rotor, value, addr)
@@ -31,6 +36,8 @@ radio.onReceivedValue(function (name, value) {
         }
     }
 })
+
+// MAIN
 basic.forever(function () {
     if (GripperStatus == 1) {
         PCA9685.setServoPosition(gripper, 50, addr)
